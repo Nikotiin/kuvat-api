@@ -1,15 +1,29 @@
-from requests import Session
+"""
+Kuvat.fi API
+"""
 from .api import Api
 
 class Client:
+    """
+    Client encapsulates Api object
+    """
     def __init__(self, base_url):
+        """
+        :param base_url: URL of kuvat.fi site
+        """
         self.base_url = base_url
         self.api = Api(base_url)
 
     def get_directories(self):
+        """
+        Get all image directories
+
+        :return: List of Directory objects
+        """
         directories = []
         response = self.api.get_directories()
         for name, data in response.items():
+            # When API returns "auth: null", user is not authenticated
             authenticated = False
             if data["auth"] is not None:
                 authenticated = True
@@ -17,7 +31,17 @@ class Client:
         return directories
 
 class Directory:
+    """
+    Directory represents kuvat.fi directory
+    """
     def __init__(self, api, id_, name, authenticated, description=""):
+        """
+        :param api: Instance of Api class
+        :param id_: ID of the directory
+        :param name: Name of the directory
+        :param authenticated: Is user authenticated to open the directory
+        :param description: Description of the directory
+        """
         self.api = api
         self.id_ = id_
         self.name = name
@@ -28,6 +52,11 @@ class Directory:
         return self.name
 
     def get_files(self):
+        """
+        Get all images from the directory
+
+        :return: List of Image objects
+        """
         files = []
         response = self.api.get_files(self.name)
         for file in response:
@@ -35,11 +64,25 @@ class Directory:
         return files
 
     def authenticate(self, password):
+        """
+        Authenticate user
+
+        :param password: Password of the directory
+        """
         self.api.authenticate(self.id_, password)
         self.authenticated = True
 
 class File:
+    """
+    File represents kuvat.fi image
+    """
     def __init__(self, api, name, path, description=""):
+        """
+        :param api: Instance of Api class
+        :param name: Name of the file
+        :param path: Path of the file
+        :param description: Description of the file
+        """
         self.api = api
         self.name = name
         self.path = path
@@ -49,7 +92,17 @@ class File:
         return self.name
 
     def get_bytes(self):
+        """
+        Get file bytes
+
+        :return: Bytearray of file
+        """
         return self.api.get_file(self.path)
 
     def save(self, path):
+        """
+        Save the file to disk
+
+        :param path: Filepath, where file should be saved
+        """
         return self.api.save_file(self.path, path)
