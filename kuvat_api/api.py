@@ -50,6 +50,7 @@ class Api:
 
         :param id_: ID of the directory
         :param password: Password
+        :return: JSON object of result of authentication
         """
         params = {"q": "folderpassword", "id": id_, "folderpassword": password}
         try:

@@ -73,6 +73,7 @@ class Directory:
         Authenticate user
 
         :param password: Password of the directory
+        :return: True if authentication was successfull
         """
         response = self.api.authenticate(self.id_, password)
 
