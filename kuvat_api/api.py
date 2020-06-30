@@ -1,7 +1,8 @@
 """
 Raw JSON API of kuvat.fi
 """
-from requests import Session
+from requests import Session, RequestException
+from .exceptions import ConnectionException, AuthenticationException
 
 class Api:
     """
@@ -22,8 +23,11 @@ class Api:
         """
         params = {"type": "getFolderTree"}
         data = {"folder": ""}
-        response = self.http_client.post(self.base_url, params=params, data=data)
-        return response.json()
+        try:
+            response = self.http_client.post(self.base_url, params=params, data=data)
+            return response.json()
+        except RequestException as exception:
+            raise ConnectionException(str(exception))
 
     def get_files(self, folder):
         """
@@ -34,8 +38,11 @@ class Api:
         """
         params = {"type": "getFileListJSON"}
         data = {"folder": folder}
-        response = self.http_client.post(self.base_url, params=params, data=data)
-        return response.json()
+        try:
+            response = self.http_client.post(self.base_url, params=params, data=data)
+            return response.json()
+        except RequestException as exception:
+            raise ConnectionException(str(exception))
 
     def authenticate(self, id_, password):
         """
@@ -45,7 +52,11 @@ class Api:
         :param password: Password
         """
         params = {"q": "folderpassword", "id": id_, "folderpassword": password}
-        self.http_client.get(self.base_url, params=params)
+        try:
+            response = self.http_client.get(self.base_url, params=params)
+            return response.json()
+        except RequestException as exception:
+            raise ConnectionException(str(exception))
 
     def get_bytes(self, path):
         """
@@ -71,5 +82,12 @@ class Api:
 
     def __get_file(self, path):
         params = {"img": "full"}
-        response = self.http_client.get(self.base_url + path, params=params)
-        return response
+        try:
+            response = self.http_client.get(self.base_url + path, params=params)
+
+            if response.status_code == 403:
+                raise AuthenticationException("403 Forbidden")
+
+            return response
+        except RequestException as exception:
+            raise ConnectionException(str(exception))

@@ -2,6 +2,7 @@
 Kuvat.fi API
 """
 from .api import Api
+from .exceptions import *
 
 class Client:
     """
@@ -59,6 +60,10 @@ class Directory:
         """
         files = []
         response = self.api.get_files(self.name)
+
+        if isinstance(response, dict) and response.get("error"):
+            raise AuthenticationException("Not authenticated")
+
         for file in response:
             files.append(File(self.api, file["filename"], file["filepath"], file["kuvaus"]))
         return files
@@ -69,8 +74,14 @@ class Directory:
 
         :param password: Password of the directory
         """
-        self.api.authenticate(self.id_, password)
-        self.authenticated = True
+        response = self.api.authenticate(self.id_, password)
+
+        if response["status"] == 1:
+            self.authenticated = True
+        else:
+            self.authenticated = False
+
+        return self.authenticated
 
 class File:
     """
@@ -105,4 +116,4 @@ class File:
 
         :param path: Filepath, where file should be saved
         """
-        return self.api.save_file(self.path, path)
+        self.api.save_file(self.path, path)
