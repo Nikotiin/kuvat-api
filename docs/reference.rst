@@ -20,7 +20,13 @@ File
     :members:
 
 JSON API
----
+--------
 
 .. automodule:: kuvat_api.api
+    :members:
+
+Exceptions
+----------
+
+.. automodule:: kuvat_api.exceptions
     :members:
