@@ -9,6 +9,9 @@ setup(
     install_requires=[
         "requests"
     ],
+    tests_require=[
+        "pytest"
+    ],
     classifiers=[
         "License :: OSI Approved :: MIT License"
     ]
