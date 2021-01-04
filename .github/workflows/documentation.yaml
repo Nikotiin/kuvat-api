@@ -35,5 +35,5 @@ jobs:
         git reset
         sphinx-build docs .
         git add _static _sources *.html *.js objects.inv
-        git commit -m "Generate documentation"
+        git diff --cached --exit-code || git commit -m "Generate documentation"
         git push origin gh-pages
