@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module reference &#8212; kuvat-api 0.2 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Index" href="genindex.html" />
+    <link rel="prev" title="Kuvat-api" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-reference">
+<h1>Module reference<a class="headerlink" href="#module-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="client">
+<h2>Client<a class="headerlink" href="#client" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="kuvat_api.Client">
+<em class="property">class </em><code class="sig-prename descclassname">kuvat_api.</code><code class="sig-name descname">Client</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_url</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.Client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Client encapsulates Api object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>base_url</strong> – URL of kuvat.fi site</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="kuvat_api.Client.get_directories">
+<code class="sig-name descname">get_directories</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.Client.get_directories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all image directories</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of Directory objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="directory">
+<h2>Directory<a class="headerlink" href="#directory" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="kuvat_api.Directory">
+<em class="property">class </em><code class="sig-prename descclassname">kuvat_api.</code><code class="sig-name descname">Directory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">api</span></em>, <em class="sig-param"><span class="n">id_</span></em>, <em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">authenticated</span></em>, <em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.Directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory represents kuvat.fi directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>api</strong> – Instance of Api class</p></li>
+<li><p><strong>id</strong> – ID of the directory</p></li>
+<li><p><strong>name</strong> – Name of the directory</p></li>
+<li><p><strong>authenticated</strong> – Is user authenticated to open the directory</p></li>
+<li><p><strong>description</strong> – Description of the directory</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="kuvat_api.Directory.authenticate">
+<code class="sig-name descname">authenticate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">password</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.Directory.authenticate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authenticate user</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>password</strong> – Password of the directory</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if authentication was successfull</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kuvat_api.Directory.get_files">
+<code class="sig-name descname">get_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.Directory.get_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all images from the directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of Image objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="file">
+<h2>File<a class="headerlink" href="#file" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="kuvat_api.File">
+<em class="property">class </em><code class="sig-prename descclassname">kuvat_api.</code><code class="sig-name descname">File</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">api</span></em>, <em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.File" title="Permalink to this definition">¶</a></dt>
+<dd><p>File represents kuvat.fi image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>api</strong> – Instance of Api class</p></li>
+<li><p><strong>name</strong> – Name of the file</p></li>
+<li><p><strong>path</strong> – Path of the file</p></li>
+<li><p><strong>description</strong> – Description of the file</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="kuvat_api.File.get_bytes">
+<code class="sig-name descname">get_bytes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.File.get_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get file bytes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Bytearray of file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kuvat_api.File.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.File.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the file to disk</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – Filepath, where file should be saved</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kuvat_api.api">
+<span id="json-api"></span><h2>JSON API<a class="headerlink" href="#module-kuvat_api.api" title="Permalink to this headline">¶</a></h2>
+<p>Raw JSON API of kuvat.fi</p>
+<dl class="py class">
+<dt id="kuvat_api.api.Api">
+<em class="property">class </em><code class="sig-prename descclassname">kuvat_api.api.</code><code class="sig-name descname">Api</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_url</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.api.Api" title="Permalink to this definition">¶</a></dt>
+<dd><p>Api encapsulates HTTP client</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>base_url</strong> – URL of kuvat.fi site</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="kuvat_api.api.Api.authenticate">
+<code class="sig-name descname">authenticate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id_</span></em>, <em class="sig-param"><span class="n">password</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.api.Api.authenticate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authenticate user</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – ID of the directory</p></li>
+<li><p><strong>password</strong> – Password</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object of result of authentication</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kuvat_api.api.Api.get_bytes">
+<code class="sig-name descname">get_bytes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.api.Api.get_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get file bytes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – Path of the file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bytearray of file bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kuvat_api.api.Api.get_directories">
+<code class="sig-name descname">get_directories</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.api.Api.get_directories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all directories</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>JSON object of directories</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kuvat_api.api.Api.get_files">
+<code class="sig-name descname">get_files</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">folder</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.api.Api.get_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all files from folder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>folder</strong> – kuvat.fi folder</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object of files</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kuvat_api.api.Api.save_file">
+<code class="sig-name descname">save_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">savepath</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kuvat_api.api.Api.save_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save file to disk</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – Path of the kuvat.fi file</p></li>
+<li><p><strong>savepath</strong> – Path, where file should be saved</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kuvat_api.exceptions">
+<span id="exceptions"></span><h2>Exceptions<a class="headerlink" href="#module-kuvat_api.exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Module for Api exceptions</p>
+<dl class="py exception">
+<dt id="kuvat_api.exceptions.ApiException">
+<em class="property">exception </em><code class="sig-prename descclassname">kuvat_api.exceptions.</code><code class="sig-name descname">ApiException</code><a class="headerlink" href="#kuvat_api.exceptions.ApiException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for API exceptions</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="kuvat_api.exceptions.AuthenticationException">
+<em class="property">exception </em><code class="sig-prename descclassname">kuvat_api.exceptions.</code><code class="sig-name descname">AuthenticationException</code><a class="headerlink" href="#kuvat_api.exceptions.AuthenticationException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for failed authentication exceptions</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="kuvat_api.exceptions.ConnectionException">
+<em class="property">exception </em><code class="sig-prename descclassname">kuvat_api.exceptions.</code><code class="sig-name descname">ConnectionException</code><a class="headerlink" href="#kuvat_api.exceptions.ConnectionException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for JSON API connection exceptions</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">kuvat-api</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Module reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#client">Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#directory">Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kuvat_api.api">JSON API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kuvat_api.exceptions">Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Kuvat-api</a></li>
+      <li>Next: <a href="genindex.html" title="next chapter">Index</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Niko Riipiranta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/reference.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
