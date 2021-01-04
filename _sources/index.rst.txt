@@ -15,7 +15,7 @@ Installation
 
 To install kuvat-api::
 
-   $ pip install git+https://github.com/Nikotiin/kuvat-api@v0.1
+   $ pip install git+https://github.com/Nikotiin/kuvat-api@v0.2
 
 Usage
 -----
